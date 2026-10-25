@@ -1,0 +1,611 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<meta name="theme-color" content="#080808">
+<meta content="web_standard" name="shell-type">
+<title>JYRAN — Tandoor Dining &amp; Lounge, BKC Mumbai</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,800&amp;family=Syne:wght@700;800;900&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&amp;family=Space+Mono:ital,wght@0,400;0,700;1,700&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base {
+      html, body { margin:0; padding:0; background:#080808; color:#f0ece1; }
+      body { overscroll-behavior:none; }
+      ::-webkit-scrollbar { display:none; }
+    }
+    .grid-paper-bg {
+      background-size: 28px 28px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    }
+    .dot-matrix-bg {
+      background-image: radial-gradient(rgba(255, 85, 59, 0.18) 1px, transparent 0);
+      background-size: 14px 14px;
+    }
+    .slant-hazard-red {
+      background: repeating-linear-gradient(
+        -45deg,
+        #ff553b,
+        #ff553b 14px,
+        #0e0e0e 14px,
+        #0e0e0e 28px
+      );
+    }
+    .slant-hazard-yellow {
+      background: repeating-linear-gradient(
+        -45deg,
+        #fabc4d,
+        #fabc4d 12px,
+        #0e0e0e 12px,
+        #0e0e0e 24px
+      );
+    }
+    .stamp-rotate-n3 { transform: rotate(-3deg); }
+    .stamp-rotate-4 { transform: rotate(4deg); }
+    .stamp-rotate-n6 { transform: rotate(-6deg); }
+    .stamp-rotate-2 { transform: rotate(2deg); }
+    .text-stroke-thick {
+      -webkit-text-stroke: 1.5px #fabc4d;
+      color: transparent;
+    }
+    .text-stroke-red {
+      -webkit-text-stroke: 2px #ff553b;
+      color: transparent;
+    }
+    @keyframes marqueeHorizontal {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee-infinite {
+      display: flex;
+      width: 200%;
+      animation: marqueeHorizontal 22s linear infinite;
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com/3.4.17?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#0c0c0c",
+            "surface-dim": "#080808",
+            "surface-container-lowest": "#050505",
+            "surface-container-low": "#111111",
+            "surface-container": "#181818",
+            "surface-container-high": "#222222",
+            "surface-container-highest": "#2e2e2e",
+            "on-surface": "#f2eee5",
+            "on-surface-variant": "#d3cbc3",
+            "primary": "#ff553b",
+            "primary-container": "#ff3819",
+            "on-primary": "#050505",
+            "secondary": "#fabc4d",
+            "secondary-container": "#ffc83b",
+            "on-secondary": "#1a1200",
+            "tertiary": "#24e0b0",
+            "outline": "#78655e",
+            "outline-variant": "#3f3330"
+          },
+          fontFamily: {
+            "display-hero": ["Syne", "sans-serif"],
+            "headline-xl": ["Syne", "sans-serif"],
+            "headline-lg": ["Syne", "sans-serif"],
+            "headline-md": ["Syne", "sans-serif"],
+            "headline-sm": ["Syne", "sans-serif"],
+            "label-stamp": ["Space Mono", "monospace"],
+            "label-data": ["Space Mono", "monospace"],
+            "body-xl": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+html{-webkit-text-size-adjust:100%}
+body{overflow-x:clip}
+#hero-scroll{height:var(--len,420vh)}
+#stage{top:var(--hh,72px);height:calc(100vh - var(--hh,72px));height:calc(100svh - var(--hh,72px));contain:layout paint;background:#090909 var(--poster) center/cover no-repeat}
+#cv{touch-action:pan-y}
+.stage-shade{background:linear-gradient(to bottom,rgba(9,9,9,.82),rgba(9,9,9,.15) 28%,rgba(9,9,9,.15) 55%,rgba(9,9,9,.9))}
+@media(min-width:1024px){.stage-shade{background:linear-gradient(to right,rgba(9,9,9,.88),rgba(9,9,9,.3) 55%,rgba(9,9,9,.1)),linear-gradient(to top,rgba(9,9,9,.85),transparent 30%)}}
+#copy,#hud-end{will-change:opacity,transform}
+@media(prefers-reduced-motion:reduce){#hero-scroll{height:auto}#stage{position:relative;top:0;min-height:calc(100svh - var(--hh,72px))}#hud-end{opacity:1!important}#bar{display:none}}
+</style>
+<style>
+.kb{scale:1.16}.embers,.mq,.gal-track{contain:paint}.embers{position:absolute;inset:0;pointer-events:none;overflow:hidden}.embers span{position:absolute;bottom:-12px;width:var(--s);height:var(--s);border-radius:50%;background:#ff553b;box-shadow:0 0 8px #ff553b;opacity:0}
+.mq{overflow:hidden;border-block:4px solid #000;background:#0c0c0c;padding:.4rem 0}.mq-b{background:#ff553b;color:#080808}.mq-track{display:flex;width:max-content}.mq-track span{font:900 clamp(2.4rem,9vw,5.5rem)/1.1 Syne,sans-serif;text-transform:uppercase;white-space:pre;letter-spacing:-.02em;padding-right:.2em}.mq-a span{color:transparent;-webkit-text-stroke:1.5px #fabc4d}
+.btn-s{position:relative;overflow:hidden}
+@media(prefers-reduced-motion:no-preference){
+.kb{animation:kb 16s ease-in-out infinite alternate}@keyframes kb{to{scale:1.27}}
+.embers span{animation:rise var(--t) linear infinite;animation-delay:var(--dl)}@keyframes rise{0%{opacity:0;translate:0 0}12%{opacity:.9}100%{opacity:0;translate:var(--dx) -85vh}}
+.mq-a .mq-track{animation:mqL 34s linear infinite}.mq-b .mq-track{animation:mqL 26s linear infinite reverse}@keyframes mqL{to{translate:-50% 0}}
+.gal-track{animation:mqL 40s linear infinite}.gal-track:hover{animation-play-state:paused}
+.slant-hazard-red{background-size:39.6px 100%;animation:hz 1.4s linear infinite}.slant-hazard-yellow{background-size:33.9px 100%;animation:hy 1.4s linear infinite}@keyframes hz{to{background-position:39.6px 0}}@keyframes hy{to{background-position:33.9px 0}}
+[class*="stamp-rotate-"]{animation:wob 5s ease-in-out infinite alternate;animation-delay:calc(var(--i,0)*-.8s)}@keyframes wob{from{rotate:-1.3deg}to{rotate:1.5deg}}
+#copy h1>div:not(.animate-pulse){animation:hl 1s cubic-bezier(.2,.8,.2,1) both}#copy h1>div:nth-child(3){animation-delay:.25s!important}#copy h1>div:nth-child(4){animation-delay:.4s!important}@keyframes hl{from{opacity:0;translate:-40px 30px}}
+#copy [class*="stamp-rotate-"]{animation:slam .55s cubic-bezier(.3,1.6,.5,1) .9s both,wob 5s ease-in-out 1.5s infinite alternate}@keyframes slam{from{opacity:0;scale:2.6}}
+.btn-s::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%);translate:-130% 0;animation:sheen 3.4s ease-in-out infinite;pointer-events:none}@keyframes sheen{55%,100%{translate:130% 0}}
+.rv:not(.is-in){opacity:0}.rv.is-in{animation:rvIn .95s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d,0ms)}.rv.rl{--vx:-70px;--vy:0px}.rv.rr{--vx:70px;--vy:0px}@keyframes rvIn{from{opacity:0;translate:var(--vx,0) var(--vy,50px);scale:.96}}
+.wd{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.12em}.wd>span{display:inline-block;translate:0 115%}.wsplit.is-in .wd>span{animation:wup .85s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*70ms)}@keyframes wup{to{translate:0 0}}
+}</style>
+<style>html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}.lenis.lenis-stopped{overflow:clip}.lenis.lenis-smooth iframe{pointer-events:none}
+.gal-track,.mq-track{will-change:transform}.embers span{box-shadow:none!important}html{scroll-behavior:auto!important}</style></head>
+<body class="bg-[#080808] text-on-surface font-body-md antialiased selection:bg-primary selection:text-black grid-paper-bg overflow-x-hidden">
+
+<div id="sp" style="position:fixed;top:0;left:0;height:4px;width:100%;background:#ff553b;transform:scaleX(0);transform-origin:0 50%;z-index:60;pointer-events:none"></div><aside aria-label="Live Counter Marquee" class="w-full bg-secondary text-black font-label-stamp text-xs uppercase font-extrabold tracking-widest overflow-hidden border-b-2 border-black flex items-center h-8 z-50 relative select-none">
+<div class="animate-marquee-infinite whitespace-nowrap py-1"><span class="mx-3">★ TANDOOR DINING & LOUNGE</span>
+<span class="mx-3 bg-black text-secondary px-2 py-0.5">NORTH INDIAN FOOD • BKC, MUMBAI</span>
+<span class="mx-3">★ INSIDE SOFITEL MUMBAI BKC</span>
+<span class="mx-3 bg-primary text-white px-2 py-0.5 font-black">OPEN TILL 11:30 PM</span>
+<span class="mx-3">★ WARM SERVICE • ROYAL TASTE</span>
+<span class="mx-3 text-black">【 JYRAN • WELCOME 】</span>
+<span class="mx-3">★ TANDOOR DINING & LOUNGE</span>
+<span class="mx-3 bg-black text-secondary px-2 py-0.5">NORTH INDIAN FOOD • BKC, MUMBAI</span>
+<span class="mx-3">★ INSIDE SOFITEL MUMBAI BKC</span>
+<span class="mx-3 bg-primary text-white px-2 py-0.5 font-black">OPEN TILL 11:30 PM</span>
+<span class="mx-3">★ WARM SERVICE • ROYAL TASTE</span>
+<span class="mx-3 text-black">【 JYRAN • WELCOME 】</span></div>
+</aside>
+
+<header class="sticky top-0 z-40 w-full bg-[#0c0c0c]/95  border-b-4 border-black shadow-[0_8px_0_rgba(0,0,0,1)]">
+<div class="max-w-[1520px] mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-4">
+
+<div class="flex items-center gap-3">
+<a class="flex items-center gap-2.5 group" href="#hero-scroll">
+<div class="hidden sm:block bg-primary text-black font-black font-label-stamp text-base px-2.5 py-1 border-2 border-black shadow-[3px_3px_0px_#fabc4d] tracking-tighter uppercase transition-transform group-hover:scale-105 group-hover:rotate-1">BKC</div>
+<div class="flex flex-col">
+<span class="font-display-hero text-base sm:text-2xl font-black uppercase tracking-tighter leading-none text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5">JYRAN<span class="bg-surface-container-high px-1.5 text-xs text-secondary border border-outline-variant font-label-stamp tracking-widest hidden sm:inline-block">MUMBAI</span>
+</span>
+<span class="font-label-stamp text-[10px] text-zinc-400 uppercase tracking-widest leading-none mt-0.5">TANDOOR DINING & LOUNGE</span>
+</div>
+</a>
+</div>
+
+
+
+<nav class="hidden md:flex items-center gap-2 font-label-stamp text-xs font-bold uppercase">
+<a class="px-3 py-1.5 text-zinc-300 hover:text-black hover:bg-secondary border border-transparent hover:border-black transition-all" href="#experience">ABOUT US</a>
+<a class="px-3 py-1.5 text-zinc-300 hover:text-black hover:bg-secondary border border-transparent hover:border-black transition-all" href="#craft">OUR FOOD</a>
+
+<a class="px-3 py-1.5 text-zinc-300 hover:text-black hover:bg-secondary border border-transparent hover:border-black transition-all" href="#find-us">FIND US</a>
+</nav>
+
+<div class="flex items-center gap-2">
+<a class="relative inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 font-label-stamp text-xs sm:text-sm font-black uppercase bg-primary text-black border-2 border-black shadow-[4px_4px_0px_#ffffff] hover:shadow-[1px_1px_0px_#ffffff] hover:translate-x-[3px] hover:translate-y-[3px] active:shadow-none transition-all" href="#reserve">
+<span class="w-2 h-2 rounded-full bg-black animate-pulse"></span>
+<span class="">BOOK A TABLE</span>
+<span class="hidden sm:inline-block bg-black text-primary px-1.5 text-[10px]">NOW</span>
+</a>
+</div>
+</div>
+</header>
+<main class="w-full">
+
+
+<section id="hero-scroll" class="relative w-full bg-[#090909] border-b-4 border-black" aria-label="Jyran hero">
+<div id="stage" class="sticky overflow-hidden bg-[#090909]">
+<canvas id="cv" class="absolute inset-0 w-full h-full block" aria-hidden="true"></canvas>
+<div class="embers" aria-hidden="true"><span style="left:44%;--s:4px;--t:10s;--dl:-10s;--dx:-54px"></span><span style="left:12%;--s:7px;--t:7s;--dl:-5s;--dx:14px"></span><span style="left:10%;--s:7px;--t:8s;--dl:-0s;--dx:-49px"></span><span style="left:58%;--s:6px;--t:7s;--dl:-3s;--dx:-49px"></span><span style="left:73%;--s:6px;--t:7s;--dl:-9s;--dx:-45px"></span><span style="left:31%;--s:7px;--t:7s;--dl:-9s;--dx:14px"></span><span style="left:53%;--s:3px;--t:8s;--dl:-0s;--dx:11px"></span><span style="left:20%;--s:5px;--t:10s;--dl:-2s;--dx:9px"></span><span style="left:18%;--s:7px;--t:9s;--dl:-8s;--dx:44px"></span><span style="left:90%;--s:4px;--t:7s;--dl:-9s;--dx:13px"></span><span style="left:84%;--s:4px;--t:9s;--dl:-1s;--dx:10px"></span><span style="left:94%;--s:3px;--t:11s;--dl:-0s;--dx:19px"></span><span style="left:29%;--s:6px;--t:12s;--dl:-8s;--dx:-6px"></span><span style="left:43%;--s:6px;--t:11s;--dl:-7s;--dx:-14px"></span></div><div class="absolute inset-0 pointer-events-none stage-shade"></div>
+<div class="absolute inset-0 pointer-events-none dot-matrix-bg opacity-60"></div>
+<div class="absolute -right-6 -top-6 select-none pointer-events-none opacity-5 font-display-hero text-[22vw] lg:text-[200px] font-black text-white leading-none">JYRAN</div>
+<div id="hud-top" class="absolute left-0 right-0 top-0 px-4 sm:px-6 lg:px-12 pt-4 z-10">
+<div class="max-w-[1520px] mx-auto"><div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-6">
+<span class="inline-flex items-center gap-1.5 bg-black text-secondary px-3 py-1 font-label-stamp text-xs font-bold border-2 border-secondary shadow-[3px_3px_0px_#ff553b] stamp-rotate-n3">
+<span class="w-2 h-2 bg-secondary animate-ping"></span>
+            NORTH INDIAN FOOD
+          </span>
+<span class="bg-primary text-black font-label-stamp text-xs font-black px-3 py-1 border-2 border-black uppercase tracking-wider stamp-rotate-2 shadow-[3px_3px_0px_#000000]">
+            【 BKC, MUMBAI 】
+          </span>
+
+
+</div>
+</div></div>
+<div id="copy" class="absolute left-0 right-0 z-10 px-4 sm:px-6 lg:px-12 bottom-[max(1.5rem,env(safe-area-inset-bottom))] lg:bottom-auto lg:top-[22%]">
+<div class="max-w-[1520px] mx-auto"><div class="relative lg:w-[62%]"><div class="absolute -top-6 right-4 sm:right-12 z-20 border-4 border-primary text-primary bg-[#080808]/90 font-display-hero font-black text-2xl sm:text-3xl px-3 py-1 uppercase tracking-widest stamp-rotate-n6 shadow-[4px_4px_0px_#fabc4d]">TANDOOR DINING</div>
+<h1 class="font-display-hero text-[clamp(2.6rem,12.5vw,4.5rem)] sm:text-7xl xl:text-8xl font-black uppercase tracking-tighter leading-[0.88] text-white"><div class="text-white">ROYAL FLAVORS.</div>
+<div class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary animate-pulse">FROM THE TANDOOR.</div>
+<div class="text-stroke-thick tracking-tight">FIRE. FOOD. FRIENDS.</div>
+<div class="text-white flex flex-wrap items-center gap-x-3">
+  <span class="">OPEN TILL</span>
+  <span class="text-primary text-stroke-red font-outline">11:30 PM.</span>
+</div></h1></div></div></div>
+<div id="hud-end" class="absolute left-0 right-0 bottom-0 z-10 px-4 sm:px-6 lg:px-12 pb-[max(1.25rem,env(safe-area-inset-bottom))] opacity-0">
+<div class="max-w-[1520px] mx-auto flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+<div class="bg-black/90 p-3 border-2 border-zinc-700 flex items-center justify-between gap-3 sm:max-w-md w-full">
+<div><p class="font-label-stamp text-[10px] text-secondary font-black uppercase">AT JYRAN</p>
+<p class="font-display-hero text-sm font-bold text-white uppercase">North Indian dishes from the tandoor</p></div>
+<div class="bg-primary text-black font-label-stamp text-xs font-black px-2.5 py-1 uppercase shrink-0">HOT & FRESH</div></div>
+<div class="flex flex-wrap gap-2 items-center">
+<span class="bg-primary/95 text-black font-display-hero font-black text-xs sm:text-sm px-3 py-1 uppercase tracking-widest border-2 border-black stamp-rotate-4 shadow-[4px_4px_0px_#000000]">COOKED IN THE TANDOOR</span>
+<span class="bg-secondary text-black font-display-hero font-black text-sm px-4 py-2 border-2 border-black stamp-rotate-n6 shadow-[4px_4px_0px_#000000]">COME HUNGRY • LEAVE HAPPY</span></div></div></div>
+<div id="cue" class="absolute left-1/2 -translate-x-1/2 z-10 font-label-stamp text-[11px] font-bold tracking-widest text-secondary uppercase bottom-[max(0.5rem,env(safe-area-inset-bottom))] hidden">▼ SCROLL</div>
+<div class="absolute left-0 right-0 bottom-0 h-1.5 bg-black/60 z-20"><div id="bar" class="h-full w-full bg-primary origin-left" style="transform:scaleX(0)"></div></div>
+</div></section>
+<section id="hero-details" class="relative w-full pt-12 pb-16 px-4 sm:px-6 lg:px-12 border-b-4 border-black bg-[#090909] overflow-hidden">
+<div class="max-w-[1520px] mx-auto relative z-10"><div class="max-w-3xl flex flex-col space-y-6">
+
+<div class="bg-[#141414] border-4 border-black p-5 relative shadow-[8px_8px_0px_#000000] dot-matrix-bg">
+<div class="absolute -top-3 left-4 bg-secondary text-black font-label-stamp text-[11px] font-black px-2 py-0.5 border-2 border-black uppercase">
+                VISIT US
+              </div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-dashed border-zinc-700 pb-4 mb-4">
+<div>
+<p class="font-label-stamp text-xs text-primary font-bold uppercase tracking-widest">ADDRESS</p>
+<p class="font-display-hero text-lg font-bold text-white uppercase">SOFITEL MUMBAI BKC, BANDRA EAST</p>
+
+</div>
+<div class="text-right sm:border-l-2 sm:border-zinc-800 sm:pl-4">
+<p class="font-label-stamp text-xs text-secondary font-bold uppercase">OPEN</p>
+<p class="font-display-hero text-xl font-black text-yellow-400">CLOSES 11:30 PM</p>
+<p class="font-label-stamp text-[10px] text-zinc-400 uppercase">CALL 022 6117 5115</p>
+</div>
+</div>
+
+
+
+</div>
+
+
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+<a class="inline-flex items-center justify-center gap-3 px-8 py-5 font-display-hero text-lg font-black uppercase bg-primary text-black border-4 border-black shadow-[6px_6px_0px_#fabc4d] hover:shadow-[2px_2px_0px_#fabc4d] hover:translate-x-[4px] hover:translate-y-[4px] transition-all text-center group" href="#reserve">
+<span class="">BOOK A TABLE</span>
+<span class="text-2xl group-hover:translate-x-1 transition-transform">→</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 px-6 py-5 font-display-hero text-base font-black uppercase bg-[#1e1e1e] text-white border-4 border-black shadow-[6px_6px_0px_#000000] hover:bg-secondary hover:text-black hover:border-black transition-all text-center" href="#craft"><span class="">SEE OUR FOOD</span></a>
+</div>
+</div></div></section>
+
+<div class="w-full h-4 slant-hazard-red border-y-2 border-black"></div>
+
+<div class="mq mq-a" aria-hidden="true"><div class="mq-track"><span>ROYAL FLAVORS ✦ FROM THE TANDOOR ✦  </span><span>ROYAL FLAVORS ✦ FROM THE TANDOOR ✦  </span><span>ROYAL FLAVORS ✦ FROM THE TANDOOR ✦  </span><span>ROYAL FLAVORS ✦ FROM THE TANDOOR ✦  </span><span>ROYAL FLAVORS ✦ FROM THE TANDOOR ✦  </span><span>ROYAL FLAVORS ✦ FROM THE TANDOOR ✦  </span></div></div><div class="mq mq-b" aria-hidden="true"><div class="mq-track"><span>COME HUNGRY • LEAVE HAPPY •  </span><span>COME HUNGRY • LEAVE HAPPY •  </span><span>COME HUNGRY • LEAVE HAPPY •  </span><span>COME HUNGRY • LEAVE HAPPY •  </span><span>COME HUNGRY • LEAVE HAPPY •  </span><span>COME HUNGRY • LEAVE HAPPY •  </span></div></div><section class="w-full bg-[#0c0c0c] py-20 px-4 sm:px-6 lg:px-12 border-b-4 border-black relative" id="experience">
+<div class="max-w-[1520px] mx-auto space-y-12">
+
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b-4 border-black pb-8">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary text-black font-label-stamp text-xs font-black px-2.5 py-0.5 uppercase">ABOUT US</span>
+<span class="font-label-stamp text-xs text-secondary tracking-widest uppercase font-bold">OUR RESTAURANT</span>
+</div>
+<h2 class="font-display-hero text-4xl sm:text-6xl font-black uppercase tracking-tight text-white">
+              THE FOOD &<span class="bg-primary text-black px-3 py-0.5 inline-block stamp-rotate-1">THE PLACE</span>
+</h2>
+</div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+<div class="bg-[#141414] border-4 border-black p-6 relative flex flex-col justify-between shadow-[8px_8px_0px_#000000] hover:shadow-[12px_12px_0px_#ff553b] transition-shadow group">
+
+<div class="img-wrap relative -mx-6 -mt-6 mb-6 aspect-[16/10] overflow-hidden border-b-4 border-black bg-black"><img src="img/table.webp" alt="A table full of freshly cooked dishes" loading="lazy" decoding="async" class="par kb absolute inset-0 w-full h-full object-cover"></div><div class="space-y-4">
+<div class="font-display-hero text-6xl font-black text-primary leading-none group-hover:scale-105 transition-transform">
+                01
+              </div>
+<h3 class="font-display-hero text-2xl font-black uppercase text-white tracking-tight">
+                TANDOOR COOKING
+              </h3>
+<p class="font-body-md text-zinc-300 leading-relaxed font-medium">Fresh breads and dishes cooked in a real clay tandoor.</p>
+</div>
+
+</div>
+
+<div class="bg-[#141414] border-4 border-black p-6 relative flex flex-col justify-between shadow-[8px_8px_0px_#000000] hover:shadow-[12px_12px_0px_#fabc4d] transition-shadow group">
+
+<div class="img-wrap relative -mx-6 -mt-6 mb-6 aspect-[16/10] overflow-hidden border-b-4 border-black bg-black"><img src="img/drinks.webp" alt="Rice and curries served in copper bowls" loading="lazy" decoding="async" class="par kb absolute inset-0 w-full h-full object-cover"></div><div class="space-y-4">
+<div class="font-display-hero text-6xl font-black text-secondary leading-none group-hover:scale-105 transition-transform">
+                02
+              </div>
+<h3 class="font-display-hero text-2xl font-black uppercase text-white tracking-tight">
+                NORTH INDIAN MENU
+              </h3>
+<p class="font-body-md text-zinc-300 leading-relaxed font-medium">A big menu of North Indian dishes, from dal and biryani to naan and sweets.</p>
+</div>
+
+</div>
+
+<div class="bg-[#141414] border-4 border-black p-6 relative flex flex-col justify-between shadow-[8px_8px_0px_#000000] hover:shadow-[12px_12px_0px_#24e0b0] transition-shadow group">
+
+<div class="img-wrap relative -mx-6 -mt-6 mb-6 aspect-[16/10] overflow-hidden border-b-4 border-black bg-black"><img src="img/friends.webp" alt="Guests enjoying a meal together" loading="lazy" decoding="async" class="par kb absolute inset-0 w-full h-full object-cover"></div><div class="space-y-4">
+<div class="font-display-hero text-6xl font-black text-white leading-none group-hover:scale-105 transition-transform">
+                03
+              </div>
+<h3 class="font-display-hero text-2xl font-black uppercase text-white tracking-tight">
+                WARM WELCOME
+              </h3>
+<p class="font-body-md text-zinc-300 leading-relaxed font-medium">A beautiful hotel setting with friendly staff, for family dinners and special days.</p>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="w-full bg-[#080808] py-20 px-4 sm:px-6 lg:px-12 border-b-4 border-black" id="craft">
+<div class="max-w-[1520px] mx-auto">
+<div class="bg-[#121212] border-4 border-black shadow-[14px_14px_0px_#000000] grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
+
+<div class="lg:col-span-7 relative min-h-[460px] lg:min-h-full bg-black border-b-4 lg:border-b-0 lg:border-r-4 border-black flex flex-col justify-between p-4 sm:p-6 overflow-hidden">
+<img alt="Rice dish served with a crispy papad" class="par kb absolute inset-0 w-full h-full object-cover brightness-75" loading="lazy" decoding="async" src="img/bowl.webp">
+
+
+
+<div class="relative z-10 self-start my-auto bg-primary text-black font-display-hero font-black text-2xl sm:text-3xl px-4 py-2 border-3 border-black uppercase tracking-tight stamp-rotate-n6 shadow-[6px_6px_0px_#000000]">FRESH FROM THE TANDOOR</div>
+
+
+</div>
+
+<div class="lg:col-span-5 p-6 sm:p-10 flex flex-col justify-between space-y-8 bg-[#141414] dot-matrix-bg">
+<div class="space-y-6">
+<div class="inline-flex items-center gap-2 bg-black px-3 py-1 border border-primary text-primary font-label-stamp text-xs font-bold uppercase tracking-widest">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                OUR FOOD
+              </div>
+<h3 class="font-display-hero text-4xl sm:text-5xl font-black uppercase tracking-tight text-white leading-none">MADE FRESH. FULL OF FLAVOR. <span class="text-primary">EVERY DAY.</span></h3>
+<p class="font-body-xl text-base sm:text-lg text-zinc-300 font-medium leading-relaxed">Every dish is cooked fresh with rich spices and served hot. Try our dal makhani, biryani, fresh breads and kulfi (Indian ice cream).</p>
+
+
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section aria-label="Gallery" class="w-full bg-[#080808] py-12 border-b-4 border-black overflow-hidden"><div class="gal-track flex gap-6 w-max pr-6"><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#ff553b]" style="rotate:-2deg"><img src="img/bowl.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#fabc4d]" style="rotate:1.5deg"><img src="img/f1.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#ff553b]" style="rotate:-1deg"><img src="img/bowl2.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#fabc4d]" style="rotate:2deg"><img src="img/f2.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#ff553b]" style="rotate:-2deg"><img src="img/drinks.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#fabc4d]" style="rotate:1.5deg"><img src="img/f3.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#ff553b]" style="rotate:-1deg"><img src="img/table.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#ff553b]" style="rotate:-2deg"><img src="img/bowl.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#fabc4d]" style="rotate:1.5deg"><img src="img/f1.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#ff553b]" style="rotate:-1deg"><img src="img/bowl2.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#fabc4d]" style="rotate:2deg"><img src="img/f2.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#ff553b]" style="rotate:-2deg"><img src="img/drinks.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#fabc4d]" style="rotate:1.5deg"><img src="img/f3.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure><figure class="gal-t shrink-0 w-[58vw] sm:w-64 aspect-[4/5] border-4 border-black overflow-hidden shadow-[8px_8px_0px_#ff553b]" style="rotate:-1deg"><img src="img/table.webp" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover"></figure></div></section><section class="w-full bg-[#0c0c0c] py-20 px-4 sm:px-6 lg:px-12 border-b-4 border-black relative" id="find-us">
+<div class="max-w-[1520px] mx-auto space-y-10">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b-4 border-black pb-6">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary text-black font-label-stamp text-xs font-black px-2 py-0.5 uppercase">HOW TO FIND US</span>
+<span class="font-label-stamp text-xs text-secondary tracking-widest uppercase font-bold">BANDRA KURLA COMPLEX, MUMBAI</span>
+</div>
+<h2 class="font-display-hero text-4xl sm:text-6xl font-black uppercase tracking-tight text-white">
+              WE ARE AT <span class="bg-primary text-black px-3 py-0.5 inline-block stamp-rotate-n2">SOFITEL BKC</span>
+</h2>
+</div>
+
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+
+<div class="lg:col-span-7 bg-black border-4 border-black shadow-[12px_12px_0px_#000000] relative overflow-hidden min-h-[340px] sm:min-h-[400px] flex flex-col justify-between">
+
+<iframe title="Map showing Jyran at Sofitel Mumbai BKC" src="https://www.google.com/maps?q=JYRAN+Tandoor+Dining+%26+Lounge+Sofitel+Mumbai+BKC+C+57+G+Block+Bandra+Kurla+Complex+Mumbai+400051&amp;output=embed" class="absolute inset-0 w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+
+<div class="relative z-10 mt-auto bg-black/95 p-3.5 border-t-2 border-zinc-800 flex flex-wrap gap-2 items-center justify-between">
+<div class="flex gap-2">
+<a class="px-3 py-1.5 bg-yellow-400 text-black font-label-stamp text-xs font-black uppercase border-2 border-black shadow-[2px_2px_0px_#ffffff] hover:bg-white transition-colors" href="https://www.google.com/maps/search/?api=1&amp;query=JYRAN+Tandoor+Dining+and+Lounge+Sofitel+Mumbai+BKC" rel="noopener noreferrer" target="_blank">
+                  OPEN IN GOOGLE MAPS ↗
+                </a>
+<a class="px-3 py-1.5 bg-zinc-800 text-white font-label-stamp text-xs font-bold uppercase border border-zinc-600 hover:bg-zinc-700 transition-colors" href="tel:+912261175115" rel="noopener noreferrer" target="_blank">
+                  CALL US
+                </a>
+</div>
+
+</div>
+</div>
+
+<div class="lg:col-span-5 bg-[#141414] border-4 border-black p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-[12px_12px_0px_#000000] dot-matrix-bg">
+<div class="space-y-6">
+
+<div class="border-b-2 border-dashed border-zinc-700 pb-4">
+<span class="font-label-stamp text-xs text-primary font-bold uppercase tracking-widest block">ADDRESS</span>
+<p class="font-display-hero text-2xl sm:text-3xl font-black text-white uppercase mt-1">C 57, G BLOCK, BKC</p>
+<p class="font-body-md text-sm text-zinc-300">Inside Sofitel Mumbai BKC • Bandra East, Mumbai 400051</p>
+</div>
+
+
+
+
+
+<div class="bg-black p-3.5 border-2 border-zinc-800 space-y-1">
+<div class="flex justify-between font-label-stamp text-xs">
+<span class="text-white font-bold">CLOSES AT</span>
+<span class="text-yellow-400 font-black">11:30 PM</span>
+</div>
+<div class="flex justify-between font-label-stamp text-xs text-zinc-500">
+<span class="">PHONE</span>
+<span class="italic">022 6117 5115</span>
+</div>
+</div>
+</div>
+
+<div class="bg-primary text-black font-label-stamp text-xs font-black p-2.5 text-center border-2 border-black uppercase tracking-wider">
+              DINE-IN • TAKEAWAY • DELIVERY
+            </div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="w-full h-4 slant-hazard-red border-y-2 border-black"></div>
+
+<section id="reserve" class="relative w-full bg-[#0c0c0c] py-16 sm:py-24 px-4 sm:px-6 lg:px-12 border-b-4 border-black overflow-hidden"><div class="max-w-xl mx-auto relative z-10"><div class="mb-8"><span class="inline-block bg-secondary text-black font-label-stamp text-xs font-black px-3 py-1 border-2 border-black uppercase stamp-rotate-n3 shadow-[3px_3px_0px_#000000]">CONTACT US</span><h2 class="font-display-hero text-4xl sm:text-6xl font-black uppercase text-white leading-[0.9] mt-4">BOOK YOUR <span class="text-primary">TABLE.</span></h2></div><div class="bg-[#141414] border-4 border-black shadow-[10px_10px_0px_#ff553b] p-5 sm:p-8 space-y-5"><div class="space-y-2"><label class="block font-label-stamp text-xs font-black uppercase tracking-widest text-secondary" for="rf-name">Name</label><input id="rf-name" type="text" autocomplete="name" placeholder="Your name" class="w-full min-h-[54px] bg-black text-white border-2 border-zinc-600 focus:border-primary focus:outline-none px-4 py-3 text-base font-body-md rounded-none appearance-none"></div><div class="space-y-2"><label class="block font-label-stamp text-xs font-black uppercase tracking-widest text-secondary" for="rf-phone">Phone number</label><input id="rf-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Your phone number" class="w-full min-h-[54px] bg-black text-white border-2 border-zinc-600 focus:border-primary focus:outline-none px-4 py-3 text-base font-body-md rounded-none appearance-none"></div><div class="space-y-2"><label class="block font-label-stamp text-xs font-black uppercase tracking-widest text-secondary" for="rf-date">Date</label><input id="rf-date" type="date" class="w-full min-h-[54px] bg-black text-white border-2 border-zinc-600 focus:border-primary focus:outline-none px-4 py-3 text-base font-body-md rounded-none appearance-none" style="color-scheme:dark"></div><div class="space-y-2"><label class="block font-label-stamp text-xs font-black uppercase tracking-widest text-secondary" for="rf-time">Time</label><input id="rf-time" type="time" step="900" class="w-full min-h-[54px] bg-black text-white border-2 border-zinc-600 focus:border-primary focus:outline-none px-4 py-3 text-base font-body-md rounded-none appearance-none" style="color-scheme:dark"></div><button id="rf-go" type="button" class="btn-s w-full min-h-[60px] bg-[#25D366] text-black border-4 border-black shadow-[6px_6px_0px_#fabc4d] font-display-hero font-black text-base sm:text-lg uppercase tracking-wide hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-[3px_3px_0px_#fabc4d] active:shadow-none transition-all"><span class="inline-flex items-center justify-center gap-3"><svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg>SEND ON WHATSAPP</span></button><p class="font-body-md text-xs text-zinc-500 leading-relaxed">By sending, you agree to our <a class="underline hover:text-secondary" href="privacy.html">Privacy Policy</a> and <a class="underline hover:text-secondary" href="terms.html">Terms of Use</a>.</p><p id="rf-msg" role="status" aria-live="polite" class="font-body-md text-sm font-bold min-h-[1.5rem]"></p></div></div><div class="absolute inset-0 dot-matrix-bg opacity-40 pointer-events-none"></div></section><section class="w-full bg-[#090909] py-24 px-4 sm:px-6 lg:px-12 border-b-4 border-black relative" id="counter-status">
+<div class="max-w-[1520px] mx-auto space-y-12">
+
+<div class="bg-secondary text-black p-4 border-4 border-black shadow-[8px_8px_0px_#000000] flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="w-3.5 h-3.5 rounded-full bg-black animate-ping"></span>
+<span class="font-display-hero text-lg sm:text-xl font-black uppercase tracking-tight">
+              DINE-IN • TAKEAWAY • DELIVERY
+            </span>
+</div>
+<div class="flex items-center gap-3 font-label-stamp text-xs font-black uppercase">
+<span class="bg-black text-secondary px-2.5 py-1 border border-black">BKC, MUMBAI</span>
+
+</div>
+</div>
+
+<div class="bg-[#141414] border-4 border-black p-8 sm:p-14 relative shadow-[16px_16px_0px_#ff553b] dot-matrix-bg overflow-hidden">
+
+<div class="absolute -bottom-10 -right-6 select-none pointer-events-none opacity-5 font-display-hero text-[180px] font-black text-white leading-none">JYRAN</div>
+<div class="space-y-6 max-w-4xl relative z-10">
+<div class="inline-flex items-center gap-2 bg-primary text-black font-label-stamp text-xs font-black px-3 py-1 uppercase stamp-rotate-n2 border-2 border-black">
+              JYRAN • BKC, MUMBAI
+            </div>
+<h2 class="font-display-hero text-5xl sm:text-7xl xl:text-8xl font-black uppercase tracking-tighter text-white leading-[0.88]">COME EAT WITH US.<br><span class="bg-secondary text-black px-2 py-0.5 inline-block stamp-rotate-2 mt-2">ROYAL FLAVORS.</span><br><span class="text-white mt-1 inline-block">FROM THE TANDOOR.</span></h2>
+
+
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-6">
+<a class="inline-flex items-center justify-center gap-3 px-8 py-5 font-display-hero text-lg font-black uppercase bg-primary text-black border-4 border-black shadow-[6px_6px_0px_#fabc4d] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-[3px_3px_0px_#fabc4d] active:shadow-none transition-all text-center" href="tel:+912261175115" rel="noopener noreferrer" target="_blank">
+<span class="">CALL 022 6117 5115</span>
+<span class="text-2xl">→</span>
+</a>
+<a href="#reserve" class="inline-flex items-center justify-center gap-2 px-8 py-5 font-display-hero text-lg font-black uppercase bg-white text-black border-4 border-black shadow-[6px_6px_0px_#000000] hover:bg-secondary hover:text-black hover:translate-x-[3px] hover:translate-y-[3px] transition-all text-center" >
+<span class="">BOOK A TABLE</span>
+</a>
+<a class="inline-flex flex-col items-center justify-center px-6 py-4 font-display-hero uppercase bg-[#25D366] text-black border-4 border-black shadow-[6px_6px_0px_#fabc4d] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-[3px_3px_0px_#fabc4d] transition-all text-center group" href="https://wa.me/912261175115?text=Hello%20Jyran%21%20I%27d%20like%20to%20book%20a%20table" target="_blank" rel="noopener noreferrer">
+  <div class="flex items-center gap-2 font-black text-base">
+    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path>
+    </svg>
+    <span class="">MESSAGE ON WHATSAPP</span>
+  </div>
+  
+</a></div>
+</div>
+
+
+</div>
+</div>
+</section>
+</main>
+
+<footer class="w-full bg-[#050505] text-zinc-300 border-t-4 border-black relative">
+<div class="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-12 py-16">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-12 border-b-2 border-zinc-800">
+
+<div class="lg:col-span-5 space-y-4">
+<div class="flex items-center gap-2">
+<span class="bg-primary text-black font-label-stamp text-xs font-black px-2 py-0.5 uppercase">NORTH INDIAN • MUMBAI</span>
+<span class="font-label-stamp text-xs text-secondary font-bold uppercase">JYRAN</span>
+</div>
+<h2 class="font-display-hero text-3xl sm:text-4xl font-black uppercase text-white tracking-tight">Jyran, Sofitel Mumbai BKC</h2>
+
+
+
+</div>
+
+<div class="lg:col-span-4 space-y-4">
+<div class="font-label-stamp text-xs text-secondary font-black uppercase tracking-wider flex items-center gap-2">
+<span class="w-2 h-2 bg-secondary"></span>
+            VISIT US
+          </div>
+<div class="space-y-1 font-body-md text-sm">
+<p class="text-white font-bold">Jyran, Sofitel Mumbai BKC</p>
+<p class="text-zinc-400">C 57, G Block, Bandra Kurla Complex</p>
+<p class="text-zinc-400">Bandra East, Mumbai 400051</p>
+</div>
+<div class="pt-2">
+<a class="font-label-stamp text-xs text-primary font-bold hover:underline block" href="tel:+912261175115">
+              CALL: 022 6117 5115
+            </a>
+
+</div>
+</div>
+
+<div class="lg:col-span-3 space-y-4">
+<div class="font-label-stamp text-xs text-secondary font-black uppercase tracking-wider flex items-center gap-2">
+<span class="w-2 h-2 bg-secondary"></span>
+            GOOD TO KNOW
+          </div>
+<div class="font-label-stamp text-xs space-y-2">
+<div class="flex justify-between border-b border-zinc-800 pb-1">
+<span class="text-zinc-400">CLOSES AT</span>
+<span class="text-white font-bold">11:30 PM</span>
+</div>
+<div class="flex justify-between border-b border-zinc-800 pb-1">
+<span class="text-zinc-400">PRICE</span>
+<span class="text-primary font-bold">₹2,000+ PER PERSON</span>
+</div>
+<div class="flex justify-between text-zinc-500">
+<span class="">WE OFFER</span>
+<span class="italic">DINE-IN • TAKEAWAY</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 font-label-stamp text-xs">
+
+<div class="text-zinc-500 font-bold uppercase tracking-wider">
+          © JYRAN • ALL RIGHTS RESERVED
+        </div><nav aria-label="Legal" class="flex flex-wrap items-center justify-center md:justify-end gap-x-5 gap-y-2 text-zinc-400 font-bold uppercase tracking-wider"><a class="hover:text-secondary transition-colors" href="privacy.html">Privacy Policy</a><a class="hover:text-secondary transition-colors" href="terms.html">Terms of Use</a><a class="hover:text-secondary transition-colors" href="cookies.html">Cookie Policy</a></nav>
+</div>
+</div>
+</footer>
+
+
+
+
+<script>(()=>{const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;if(reduce)return;
+document.querySelectorAll('[class*="stamp-rotate-"]').forEach((e,i)=>e.style.setProperty('--i',i%7));
+document.querySelectorAll('a[class*="bg-primary"][class*="border-4"],button[class*="border-4"],a[class*="bg-[#25D366]"]').forEach(b=>b.classList.add('btn-s'));
+document.querySelectorAll('main h2').forEach(h=>{if(h.closest('#hero-scroll'))return;let i=0;(function w(n){[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(t=>{if(!t)return;if(/^\s+$/.test(t)){f.append(t);return}const o=document.createElement('span');o.className='wd';const s=document.createElement('span');s.style.setProperty('--i',i++);s.textContent=t;o.append(s);f.append(o)});c.replaceWith(f)}else if(c.nodeType===1&&c.tagName!=='BR')w(c)})})(h);h.classList.add('wsplit')});
+const T=[],add=(el,v,d)=>{el.classList.add('rv');if(v)el.classList.add(v);el.style.setProperty('--d',d+'ms');T.push(el)};
+document.querySelectorAll('main section:not(#hero-scroll)').forEach(sec=>{const inner=sec.querySelector(':scope>div');if(!inner||sec.getAttribute('aria-label')==='Gallery')return;
+ [...inner.children].forEach((c,i)=>{if(/\bgrid\b/.test(c.className)){const k=[...c.children];k.forEach((g,j)=>add(g,k.length===2?(j?'rr':'rl'):(j===0?'rl':j===k.length-1?'rr':''),j*130))}else add(c,'',i*90)})});
+document.querySelectorAll('footer .grid>*').forEach((e,i)=>add(e,'',i*120));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+T.concat([...document.querySelectorAll('.wsplit')]).forEach(e=>io.observe(e));
+const P=[...document.querySelectorAll('.par')],vis=new Set(),io2=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?vis.add(e.target):vis.delete(e.target)),{rootMargin:'120px'});P.forEach(p=>io2.observe(p));
+const sp=document.getElementById('sp');let tk=false;
+function fr(){tk=false;const h=innerHeight;sp.style.transform='scaleX('+Math.min(1,scrollY/Math.max(1,document.documentElement.scrollHeight-h))+')';
+ vis.forEach(el=>{const r=el.parentElement.getBoundingClientRect(),p=Math.max(-.9,Math.min(.9,((r.top+r.height/2)-h/2)/h));el.style.translate='0 '+(p*-8).toFixed(2)+'%'})}
+addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(fr)}},{passive:true});fr();
+if(matchMedia('(hover:hover) and (pointer:fine)').matches)document.querySelectorAll('#experience .grid>div').forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateY('+(x*7)+'deg) rotateX('+(-y*7)+'deg)'});c.addEventListener('pointerleave',()=>c.style.transform='')});
+})();</script>
+<script>(()=>{const $=i=>document.getElementById(i),d=$('rf-date'),m=$('rf-msg');if(!d)return;const z=n=>String(n).padStart(2,'0'),t=new Date(),today=t.getFullYear()+'-'+z(t.getMonth()+1)+'-'+z(t.getDate());d.min=today;
+const say=(h,ok)=>{m.className='font-body-md text-sm font-bold min-h-[1.5rem] '+(ok?'text-emerald-400':'text-primary');m.innerHTML=h};
+$('rf-go').addEventListener('click',()=>{const n=$('rf-name').value.trim(),p=$('rf-phone').value.trim(),dt=d.value,tm=$('rf-time').value;
+ if(!n)return say('Please enter your name.');if(p.replace(/\D/g,'').length<7)return say('Please enter a valid phone number.');if(!dt||dt<today)return say('Please pick today or a future date.');if(!tm)return say('Please pick a time.');
+ const txt='Hello Jyran! I would like to book a table.\nName: '+n+'\nPhone: '+p+'\nDate: '+dt+'\nTime: '+tm,url='https://wa.me/912261175115?text='+encodeURIComponent(txt);
+ say('Thank you, '+n.replace(/[<>&]/g,'')+'! Opening WhatsApp to send your booking. <a class="underline" target="_blank" rel="noopener" href="'+url+'">Tap here if it did not open.</a>',true);
+ const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()})})();</script>
+<script>function t(t,i,e){return Math.max(t,Math.min(i,e))}var i=class{isRunning=!1;value=0;from=0;to=0;currentTime=0;lerp;duration;easing;onUpdate;advance(i){if(!this.isRunning)return;let e=!1;if(this.duration&&this.easing){this.currentTime+=i;const s=t(0,this.currentTime/this.duration,1);e=s>=1;const o=e?1:this.easing(s);this.value=this.from+(this.to-this.from)*o}else this.lerp?(this.value=function(t,i,e,s){return function(t,i,e){return(1-e)*t+e*i}(t,i,1-Math.exp(-e*s))}(this.value,this.to,60*this.lerp,i),Math.round(this.value)===this.to&&(this.value=this.to,e=!0)):(this.value=this.to,e=!0);e&&this.stop(),this.onUpdate?.(this.value,e)}stop(){this.isRunning=!1}fromTo(t,i,{lerp:e,duration:s,easing:o,onStart:n,onUpdate:r}){this.from=this.value=t,this.to=i,this.lerp=e,this.duration=s,this.easing=o,this.currentTime=0,this.isRunning=!0,n?.(),this.onUpdate=r}};var e=class{constructor(t,i,{autoResize:e=!0,debounce:s=250}={}){this.wrapper=t,this.content=i,e&&(this.debouncedResize=function(t,i){let e;return function(...s){let o=this;clearTimeout(e),e=setTimeout((()=>{e=void 0,t.apply(o,s)}),i)}}(this.resize,s),this.wrapper instanceof Window?window.addEventListener("resize",this.debouncedResize,!1):(this.wrapperResizeObserver=new ResizeObserver(this.debouncedResize),this.wrapperResizeObserver.observe(this.wrapper)),this.contentResizeObserver=new ResizeObserver(this.debouncedResize),this.contentResizeObserver.observe(this.content)),this.resize()}width=0;height=0;scrollHeight=0;scrollWidth=0;debouncedResize;wrapperResizeObserver;contentResizeObserver;destroy(){this.wrapperResizeObserver?.disconnect(),this.contentResizeObserver?.disconnect(),this.wrapper===window&&this.debouncedResize&&window.removeEventListener("resize",this.debouncedResize,!1)}resize=()=>{this.onWrapperResize(),this.onContentResize()};onWrapperResize=()=>{this.wrapper instanceof Window?(this.width=window.innerWidth,this.height=window.innerHeight):(this.width=this.wrapper.clientWidth,this.height=this.wrapper.clientHeight)};onContentResize=()=>{this.wrapper instanceof Window?(this.scrollHeight=this.content.scrollHeight,this.scrollWidth=this.content.scrollWidth):(this.scrollHeight=this.wrapper.scrollHeight,this.scrollWidth=this.wrapper.scrollWidth)};get limit(){return{x:this.scrollWidth-this.width,y:this.scrollHeight-this.height}}},s=class{events={};emit(t,...i){let e=this.events[t]||[];for(let t=0,s=e.length;t<s;t++)e[t]?.(...i)}on(t,i){return this.events[t]?.push(i)||(this.events[t]=[i]),()=>{this.events[t]=this.events[t]?.filter((t=>i!==t))}}off(t,i){this.events[t]=this.events[t]?.filter((t=>i!==t))}destroy(){this.events={}}},o=100/6,n={passive:!1},r=class{constructor(t,i={wheelMultiplier:1,touchMultiplier:1}){this.element=t,this.options=i,window.addEventListener("resize",this.onWindowResize,!1),this.onWindowResize(),this.element.addEventListener("wheel",this.onWheel,n),this.element.addEventListener("touchstart",this.onTouchStart,n),this.element.addEventListener("touchmove",this.onTouchMove,n),this.element.addEventListener("touchend",this.onTouchEnd,n)}touchStart={x:0,y:0};lastDelta={x:0,y:0};window={width:0,height:0};emitter=new s;on(t,i){return this.emitter.on(t,i)}destroy(){this.emitter.destroy(),window.removeEventListener("resize",this.onWindowResize,!1),this.element.removeEventListener("wheel",this.onWheel,n),this.element.removeEventListener("touchstart",this.onTouchStart,n),this.element.removeEventListener("touchmove",this.onTouchMove,n),this.element.removeEventListener("touchend",this.onTouchEnd,n)}onTouchStart=t=>{const{clientX:i,clientY:e}=t.targetTouches?t.targetTouches[0]:t;this.touchStart.x=i,this.touchStart.y=e,this.lastDelta={x:0,y:0},this.emitter.emit("scroll",{deltaX:0,deltaY:0,event:t})};onTouchMove=t=>{const{clientX:i,clientY:e}=t.targetTouches?t.targetTouches[0]:t,s=-(i-this.touchStart.x)*this.options.touchMultiplier,o=-(e-this.touchStart.y)*this.options.touchMultiplier;this.touchStart.x=i,this.touchStart.y=e,this.lastDelta={x:s,y:o},this.emitter.emit("scroll",{deltaX:s,deltaY:o,event:t})};onTouchEnd=t=>{this.emitter.emit("scroll",{deltaX:this.lastDelta.x,deltaY:this.lastDelta.y,event:t})};onWheel=t=>{let{deltaX:i,deltaY:e,deltaMode:s}=t;i*=1===s?o:2===s?this.window.width:1,e*=1===s?o:2===s?this.window.height:1,i*=this.options.wheelMultiplier,e*=this.options.wheelMultiplier,this.emitter.emit("scroll",{deltaX:i,deltaY:e,event:t})};onWindowResize=()=>{this.window={width:window.innerWidth,height:window.innerHeight}}},Lenis=class{_isScrolling=!1;_isStopped=!1;_isLocked=!1;_preventNextNativeScrollEvent=!1;_resetVelocityTimeout=null;__rafID=null;isTouching;time=0;userData={};lastVelocity=0;velocity=0;direction=0;options;targetScroll;animatedScroll;animate=new i;emitter=new s;dimensions;virtualScroll;constructor({wrapper:t=window,content:i=document.documentElement,eventsTarget:s=t,smoothWheel:o=!0,syncTouch:n=!1,syncTouchLerp:l=.075,touchInertiaMultiplier:h=35,duration:a,easing:c=t=>Math.min(1,1.001-Math.pow(2,-10*t)),lerp:p=.1,infinite:d=!1,orientation:u="vertical",gestureOrientation:m="vertical",touchMultiplier:v=1,wheelMultiplier:S=1,autoResize:w=!0,prevent:g,virtualScroll:f,overscroll:y=!0,autoRaf:E=!1,anchors:T=!1,__experimental__naiveDimensions:z=!1}={}){window.lenisVersion="1.1.20",t&&t!==document.documentElement||(t=window),this.options={wrapper:t,content:i,eventsTarget:s,smoothWheel:o,syncTouch:n,syncTouchLerp:l,touchInertiaMultiplier:h,duration:a,easing:c,lerp:p,infinite:d,gestureOrientation:m,orientation:u,touchMultiplier:v,wheelMultiplier:S,autoResize:w,prevent:g,virtualScroll:f,overscroll:y,autoRaf:E,anchors:T,__experimental__naiveDimensions:z},this.dimensions=new e(t,i,{autoResize:w}),this.updateClassName(),this.targetScroll=this.animatedScroll=this.actualScroll,this.options.wrapper.addEventListener("scroll",this.onNativeScroll,!1),this.options.wrapper.addEventListener("scrollend",this.onScrollEnd,{capture:!0}),this.options.anchors&&this.options.wrapper===window&&this.options.wrapper.addEventListener("click",this.onClick,!1),this.options.wrapper.addEventListener("pointerdown",this.onPointerDown,!1),this.virtualScroll=new r(s,{touchMultiplier:v,wheelMultiplier:S}),this.virtualScroll.on("scroll",this.onVirtualScroll),this.options.autoRaf&&(this.__rafID=requestAnimationFrame(this.raf))}destroy(){this.emitter.destroy(),this.options.wrapper.removeEventListener("scroll",this.onNativeScroll,!1),this.options.wrapper.removeEventListener("scrollend",this.onScrollEnd,{capture:!0}),this.options.wrapper.removeEventListener("pointerdown",this.onPointerDown,!1),this.options.anchors&&this.options.wrapper===window&&this.options.wrapper.removeEventListener("click",this.onClick,!1),this.virtualScroll.destroy(),this.dimensions.destroy(),this.cleanUpClassName(),this.__rafID&&cancelAnimationFrame(this.__rafID)}on(t,i){return this.emitter.on(t,i)}off(t,i){return this.emitter.off(t,i)}onScrollEnd=t=>{t instanceof CustomEvent||"smooth"!==this.isScrolling&&!1!==this.isScrolling||t.stopPropagation()};dispatchScrollendEvent=()=>{this.options.wrapper.dispatchEvent(new CustomEvent("scrollend",{bubbles:this.options.wrapper===window,detail:{lenisScrollEnd:!0}}))};setScroll(t){this.isHorizontal?this.options.wrapper.scrollTo({left:t,behavior:"instant"}):this.options.wrapper.scrollTo({top:t,behavior:"instant"})}onClick=t=>{const i=t.composedPath().find((t=>t instanceof HTMLAnchorElement&&t.getAttribute("href")?.startsWith("#")));if(i){const t=i.getAttribute("href");if(t){const i="object"==typeof this.options.anchors&&this.options.anchors?this.options.anchors:void 0;this.scrollTo(t,i)}}};onPointerDown=t=>{1===t.button&&this.reset()};onVirtualScroll=t=>{if("function"==typeof this.options.virtualScroll&&!1===this.options.virtualScroll(t))return;const{deltaX:i,deltaY:e,event:s}=t;if(this.emitter.emit("virtual-scroll",{deltaX:i,deltaY:e,event:s}),s.ctrlKey)return;if(s.lenisStopPropagation)return;const o=s.type.includes("touch"),n=s.type.includes("wheel");this.isTouching="touchstart"===s.type||"touchmove"===s.type;const r=0===i&&0===e;if(this.options.syncTouch&&o&&"touchstart"===s.type&&r&&!this.isStopped&&!this.isLocked)return void this.reset();const l="vertical"===this.options.gestureOrientation&&0===e||"horizontal"===this.options.gestureOrientation&&0===i;if(r||l)return;let h=s.composedPath();h=h.slice(0,h.indexOf(this.rootElement));const a=this.options.prevent;if(h.find((t=>t instanceof HTMLElement&&("function"==typeof a&&a?.(t)||t.hasAttribute?.("data-lenis-prevent")||o&&t.hasAttribute?.("data-lenis-prevent-touch")||n&&t.hasAttribute?.("data-lenis-prevent-wheel")))))return;if(this.isStopped||this.isLocked)return void s.preventDefault();if(!(this.options.syncTouch&&o||this.options.smoothWheel&&n))return this.isScrolling="native",this.animate.stop(),void(s.lenisStopPropagation=!0);let c=e;"both"===this.options.gestureOrientation?c=Math.abs(e)>Math.abs(i)?e:i:"horizontal"===this.options.gestureOrientation&&(c=i),(!this.options.overscroll||this.options.infinite||this.options.wrapper!==window&&(this.animatedScroll>0&&this.animatedScroll<this.limit||0===this.animatedScroll&&e>0||this.animatedScroll===this.limit&&e<0))&&(s.lenisStopPropagation=!0),s.preventDefault();const p=o&&this.options.syncTouch,d=o&&"touchend"===s.type&&Math.abs(c)>5;d&&(c=this.velocity*this.options.touchInertiaMultiplier),this.scrollTo(this.targetScroll+c,{programmatic:!1,...p?{lerp:d?this.options.syncTouchLerp:1}:{lerp:this.options.lerp,duration:this.options.duration,easing:this.options.easing}})};resize(){this.dimensions.resize(),this.animatedScroll=this.targetScroll=this.actualScroll,this.emit()}emit(){this.emitter.emit("scroll",this)}onNativeScroll=()=>{if(null!==this._resetVelocityTimeout&&(clearTimeout(this._resetVelocityTimeout),this._resetVelocityTimeout=null),this._preventNextNativeScrollEvent)this._preventNextNativeScrollEvent=!1;else if(!1===this.isScrolling||"native"===this.isScrolling){const t=this.animatedScroll;this.animatedScroll=this.targetScroll=this.actualScroll,this.lastVelocity=this.velocity,this.velocity=this.animatedScroll-t,this.direction=Math.sign(this.animatedScroll-t),this.isStopped||(this.isScrolling="native"),this.emit(),0!==this.velocity&&(this._resetVelocityTimeout=setTimeout((()=>{this.lastVelocity=this.velocity,this.velocity=0,this.isScrolling=!1,this.emit()}),400))}};reset(){this.isLocked=!1,this.isScrolling=!1,this.animatedScroll=this.targetScroll=this.actualScroll,this.lastVelocity=this.velocity=0,this.animate.stop()}start(){this.isStopped&&(this.reset(),this.isStopped=!1)}stop(){this.isStopped||(this.reset(),this.isStopped=!0)}raf=t=>{const i=t-(this.time||t);this.time=t,this.animate.advance(.001*i),this.options.autoRaf&&(this.__rafID=requestAnimationFrame(this.raf))};scrollTo(i,{offset:e=0,immediate:s=!1,lock:o=!1,duration:n=this.options.duration,easing:r=this.options.easing,lerp:l=this.options.lerp,onStart:h,onComplete:a,force:c=!1,programmatic:p=!0,userData:d}={}){if(!this.isStopped&&!this.isLocked||c){if("string"==typeof i&&["top","left","start"].includes(i))i=0;else if("string"==typeof i&&["bottom","right","end"].includes(i))i=this.limit;else{let t;if("string"==typeof i?t=document.querySelector(i):i instanceof HTMLElement&&i?.nodeType&&(t=i),t){if(this.options.wrapper!==window){const t=this.rootElement.getBoundingClientRect();e-=this.isHorizontal?t.left:t.top}const s=t.getBoundingClientRect();i=(this.isHorizontal?s.left:s.top)+this.animatedScroll}}if("number"==typeof i){if(i+=e,i=Math.round(i),this.options.infinite?p&&(this.targetScroll=this.animatedScroll=this.scroll):i=t(0,i,this.limit),i===this.targetScroll)return h?.(this),void a?.(this);if(this.userData=d??{},s)return this.animatedScroll=this.targetScroll=i,this.setScroll(this.scroll),this.reset(),this.preventNextNativeScrollEvent(),this.emit(),a?.(this),this.userData={},void requestAnimationFrame((()=>{this.dispatchScrollendEvent()}));p||(this.targetScroll=i),this.animate.fromTo(this.animatedScroll,i,{duration:n,easing:r,lerp:l,onStart:()=>{o&&(this.isLocked=!0),this.isScrolling="smooth",h?.(this)},onUpdate:(t,i)=>{this.isScrolling="smooth",this.lastVelocity=this.velocity,this.velocity=t-this.animatedScroll,this.direction=Math.sign(this.velocity),this.animatedScroll=t,this.setScroll(this.scroll),p&&(this.targetScroll=t),i||this.emit(),i&&(this.reset(),this.emit(),a?.(this),this.userData={},requestAnimationFrame((()=>{this.dispatchScrollendEvent()})),this.preventNextNativeScrollEvent())}})}}}preventNextNativeScrollEvent(){this._preventNextNativeScrollEvent=!0,requestAnimationFrame((()=>{this._preventNextNativeScrollEvent=!1}))}get rootElement(){return this.options.wrapper===window?document.documentElement:this.options.wrapper}get limit(){return this.options.__experimental__naiveDimensions?this.isHorizontal?this.rootElement.scrollWidth-this.rootElement.clientWidth:this.rootElement.scrollHeight-this.rootElement.clientHeight:this.dimensions.limit[this.isHorizontal?"x":"y"]}get isHorizontal(){return"horizontal"===this.options.orientation}get actualScroll(){const t=this.options.wrapper;return this.isHorizontal?t.scrollX??t.scrollLeft:t.scrollY??t.scrollTop}get scroll(){return this.options.infinite?(t=this.animatedScroll,i=this.limit,(t%i+i)%i):this.animatedScroll;var t,i}get progress(){return 0===this.limit?1:this.scroll/this.limit}get isScrolling(){return this._isScrolling}set isScrolling(t){this._isScrolling!==t&&(this._isScrolling=t,this.updateClassName())}get isStopped(){return this._isStopped}set isStopped(t){this._isStopped!==t&&(this._isStopped=t,this.updateClassName())}get isLocked(){return this._isLocked}set isLocked(t){this._isLocked!==t&&(this._isLocked=t,this.updateClassName())}get isSmooth(){return"smooth"===this.isScrolling}get className(){let t="lenis";return this.isStopped&&(t+=" lenis-stopped"),this.isLocked&&(t+=" lenis-locked"),this.isScrolling&&(t+=" lenis-scrolling"),"smooth"===this.isScrolling&&(t+=" lenis-smooth"),t}updateClassName(){this.cleanUpClassName(),this.rootElement.className=`${this.rootElement.className} ${this.className}`.trim()}cleanUpClassName(){this.rootElement.className=this.rootElement.className.replace(/lenis(-\w+)?/g,"").trim()}};globalThis.Lenis=Lenis,globalThis.Lenis.prototype=Lenis.prototype;</script><script>(()=>{if(matchMedia("(prefers-reduced-motion:reduce)").matches||!window.Lenis)return;const l=new Lenis({lerp:.085,smoothWheel:true,anchors:{offset:-84}});window.__lenis=l;const r=t=>{l.raf(t);requestAnimationFrame(r)};requestAnimationFrame(r)})();</script>
+<link rel="preload" as="image" href="img/poster-d.webp" media="(min-width:768px)"><link rel="preload" as="image" href="img/poster-m.webp" media="(max-width:767px)"><script>window.__FR={"d": {"n": 113, "per": 6, "cols": 3, "fw": 1600, "fh": 900, "sheets": ["img/sd01.webp", "img/sd02.webp", "img/sd03.webp", "img/sd04.webp", "img/sd05.webp", "img/sd06.webp", "img/sd07.webp", "img/sd08.webp", "img/sd09.webp", "img/sd10.webp", "img/sd11.webp", "img/sd12.webp", "img/sd13.webp", "img/sd14.webp", "img/sd15.webp", "img/sd16.webp", "img/sd17.webp", "img/sd18.webp", "img/sd19.webp"]}, "m": {"n": 113, "per": 6, "cols": 3, "fw": 960, "fh": 540, "sheets": ["img/sm01.webp", "img/sm02.webp", "img/sm03.webp", "img/sm04.webp", "img/sm05.webp", "img/sm06.webp", "img/sm07.webp", "img/sm08.webp", "img/sm09.webp", "img/sm10.webp", "img/sm11.webp", "img/sm12.webp", "img/sm13.webp", "img/sm14.webp", "img/sm15.webp", "img/sm16.webp", "img/sm17.webp", "img/sm18.webp", "img/sm19.webp"]}, "pd": "img/poster-d.webp", "pm": "img/poster-m.webp"};</script>
+<script>
+(()=>{
+const D=window.__FR||{},mob=matchMedia('(max-width:767px)').matches||matchMedia('(pointer:coarse) and (max-width:1024px)').matches;
+const set=mob?D.m:D.d, isSheet=!Array.isArray(set), N=isSheet?set.n:set.length, cv=document.getElementById('cv'), cx=cv.getContext('2d',{alpha:false});
+const stage=document.getElementById('stage'),sec=document.getElementById('hero-scroll'),copy=document.getElementById('copy'),end=document.getElementById('hud-end'),bar=document.getElementById('bar'),cue=document.getElementById('cue'),hdr=document.querySelector('header');
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches, holder=new Array(isSheet?set.sheets.length:N);
+stage.style.setProperty('--poster','url('+(mob?D.pm:D.pd)+')');
+let W=0,H=0,dpr=1,cur=0,tgt=0,run=false,vis=true,drawn=-1;
+const cl=(x,a,b)=>Math.min(b,Math.max(a,x)),ss=(a,b,x)=>{x=cl((x-a)/(b-a),0,1);return x*x*(3-2*x)};
+function size(){const hh=hdr?hdr.offsetHeight:72;document.documentElement.style.setProperty('--hh',hh+'px');
+ dpr=Math.min(window.devicePixelRatio||1,mob?1.75:2);W=stage.clientWidth;H=stage.clientHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);cx.imageSmoothingEnabled=true;cx.imageSmoothingQuality='high';
+ sec.style.setProperty('--len',(mob?340:420)+'vh');cue.classList.toggle('hidden',reduce);drawn=-1;draw(true)}
+function frame(i){if(i<0||i>=N)return null;if(isSheet){const k=Math.floor(i/set.per),im=holder[k];if(!im)return null;const j=i%set.per;return {el:im,sx:(j%set.cols)*set.fw,sy:Math.floor(j/set.cols)*set.fh,w:set.fw,h:set.fh}}const im=holder[i];return im&&im.naturalWidth?{el:im,sx:0,sy:0,w:im.naturalWidth,h:im.naturalHeight}:null}
+function draw(force){const f0=cl(cur,0,1)*(N-1),f=Math.abs(f0-Math.round(f0))<1e-3?Math.round(f0):f0,i=Math.floor(f),a=f-i,key=Math.round(cur*1500)+':'+W;if(!force&&key===drawn)return;drawn=key;
+ let A=frame(i)||frame(Math.max(0,i-1));for(let q=0;q<N&&!A;q++)A=frame(q);if(!A){return}
+ const vw=A.w,vh=A.h,cw=cv.width,ch=cv.height,cover=Math.max(cw/vw,ch/vh),contain=Math.min(cw/vw,ch/vh);
+ const portrait=cw/ch<0.95;let s=cover,y=0.5;
+ if(portrait){const t=ss(.15,.9,cur),s0=cover*.88;s=s0+(contain-s0)*t;y=0.5-0.08*t}
+ const dw=vw*s,dh=vh*s,dx=(cw-dw)/2,dy=(ch-dh)*y;
+ cx.fillStyle='#090909';cx.fillRect(0,0,cw,ch);cx.globalAlpha=1;cx.drawImage(A.el,A.sx,A.sy,A.w,A.h,dx,dy,dw,dh);
+ const B=a>0.03&&frame(i+1);if(B){cx.globalAlpha=a;cx.drawImage(B.el,B.sx,B.sy,B.w,B.h,dx,dy,dw,dh);cx.globalAlpha=1}}
+function ui(){const p=cur;copy.style.opacity=reduce?1:1-ss(.42,.64,p);copy.style.transform='translate3d(0,'+(-ss(.3,.64,p)*40)+'px,0)';
+ end.style.opacity=reduce?1:ss(.7,.92,p);end.style.transform='translate3d(0,'+((1-ss(.7,.92,p))*24)+'px,0)';
+ bar.style.transform='scaleX('+p+')';cue.style.opacity=1-ss(0,.06,p)}
+let settled=true,st=0;function read(){const r=sec.getBoundingClientRect(),span=r.height-stage.clientHeight;const raw=cl(-(r.top-(hdr?hdr.offsetHeight:0))/Math.max(1,span),0,1);tgt=reduce?0:raw}
+let last=0;function tick(t){const dt=Math.min(.05,(t-(last||t-16))/1000);last=t;cur+=(tgt-cur)*(1-Math.exp(-dt*12));if(Math.abs(tgt-cur)<0.0004)cur=tgt;draw();ui();if(cur!==tgt&&vis)requestAnimationFrame(tick);else{run=false;last=0}}
+function go(){read();if(!run&&vis){run=true;requestAnimationFrame(tick)}}function settle(){settled=true;go()}function kick(){settled=false;clearTimeout(st);st=setTimeout(settle,140);go()}
+addEventListener('scroll',kick,{passive:true});addEventListener('resize',()=>{size();kick()});addEventListener('orientationchange',()=>setTimeout(()=>{size();kick()},250));
+new IntersectionObserver(e=>{vis=e[0].isIntersecting;if(vis)kick()},{rootMargin:'200px'}).observe(sec);
+function load(k){return new Promise(res=>{const im=new Image();im.decoding='async';im.src=isSheet?set.sheets[k]:set[k];(im.decode?im.decode():new Promise((r,j)=>{im.onload=r;im.onerror=j})).then(()=>{holder[k]=im;res()}).catch(res)})}
+size();ui();
+(async()=>{await load(0);draw(true);if(isSheet){const ids=[];for(let k=1;k<holder.length;k++)ids.push(k);for(let k=0;k<ids.length;k+=3){await Promise.all(ids.slice(k,k+3).map(load));draw(true)}kick();return}const order=[];for(let i=N-1;i>0;i-=1)order.push(i);
+ // load every 4th first (coarse scrub works immediately), then fill the gaps
+ const coarse=order.filter(i=>i%4===0),rest=order.filter(i=>i%4!==0).reverse();
+ for(const grp of [coarse,rest]){for(let k=0;k<grp.length;k+=6){await Promise.all(grp.slice(k,k+6).map(load));draw(true)}}
+ kick()})();
+read();cur=tgt;ui();
+})();
+</script>
+</body></html>
