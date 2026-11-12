@@ -614,7 +614,7 @@ new IntersectionObserver(e=>{vis=e[0].isIntersecting;if(vis)read()},{rootMargin:
 size();read();
 if(N&&canBM){getLo(0);const q=[];for(let i=1;i<N;i++)q.push(i);let li=0;const loW=async()=>{while(li<q.length)await getLo(q[li++])};for(let w=0;w<8;w++)loW();
  getBlob(0,true).then(()=>decode(0));
- const bgFill=async()=>{await sleep(150);while(true){let best=-1,bd=1e9;for(let i=0;i<N;i++){if(blobs[i]||fetching.has(i))continue;const d=Math.abs(i-lastIdx);if(d<bd){bd=d;best=i}}if(best<0)break;await getBlob(best)}};
+ const bgFill=async()=>{await sleep(150);while(true){let best=-1,bd=1e9;for(let i=0;i<N;i++){if(blobs[i]||fetching.has(i))continue;const d=Math.abs(i-lastIdx);if(d<bd){bd=d;best=i}}if(best<0)break;if(bd>45){await sleep(500);continue}await getBlob(best)}};
  for(let w=0;w<MAXNET;w++)bgFill()}
 })();
 </script>
